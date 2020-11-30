@@ -1,7 +1,5 @@
 /******************
-
-MAP SETTINGS 
-
+    MAP SETTINGS
 ******************/
 
 var storeLocatorConfig = {
@@ -39,8 +37,8 @@ var storeLocatorConfig = {
     "geocoder": { "region": "it" },
     "disableDirections": true,
     "places": {
-        "types": ["geocode"],
-        "componentRestrictions": {"country": "it"}
+      "types": ["geocode"],
+      "componentRestrictions": { "country": "it" }
     }
   },
   "woosmapview": {
@@ -316,24 +314,24 @@ var storeLocatorConfig = {
           "it": ""
         },
         "choices": [
-          {"key": "abbigliamento","it": "Abbigliamento"},
-          {"key": "bar_gelateria","it": "Bar / Gelateria"},
-          {"key": "edicola_cartoleria","it": "Edicola / Cartoleria"},
-          {"key": "elettronica_telefonia","it": "Elettronica / Telefonia"},
-          {"key": "farmacia_erboristeria","it": "Farmacia / Erboristeria"},
-          {"key": "fiorista","it": "Fiorista"},
-          {"key": "forno","it": "Forno"},
-          {"key": "generi_alimentari","it": "Generi alimentari"},
-          {"key": "hobby_e_tempo_libero","it": "Hobby e tempo libero"},
-          {"key": "igiene_e_bellezza","it": "Igiene e Bellezza"},
-          {"key": "lavanderia","it": "Lavanderia"},
-          {"key": "ottico","it": "Ottico"},
-          {"key": "per_gli_animali","it": "Per gli animali"},
-          {"key": "per_il_bambino","it": "Per il bambino"},
-          {"key": "per_la_casa","it": "Per la casa"},
-          {"key": "ristorazione","it": "Ristorazione"},
-          {"key": "supermercato","it": "Supermercato"},
-          {"key": "altro","it": "Altro"}
+          { "key": "abbigliamento", "it": "Abbigliamento" },
+          { "key": "bar_gelateria", "it": "Bar / Gelateria" },
+          { "key": "edicola_cartoleria", "it": "Edicola / Cartoleria" },
+          { "key": "elettronica_telefonia", "it": "Elettronica / Telefonia" },
+          { "key": "farmacia_erboristeria", "it": "Farmacia / Erboristeria" },
+          { "key": "fiorista", "it": "Fiorista" },
+          { "key": "forno", "it": "Forno" },
+          { "key": "generi_alimentari", "it": "Generi alimentari" },
+          { "key": "hobby_e_tempo_libero", "it": "Hobby e tempo libero" },
+          { "key": "igiene_e_bellezza", "it": "Igiene e Bellezza" },
+          { "key": "lavanderia", "it": "Lavanderia" },
+          { "key": "ottico", "it": "Ottico" },
+          { "key": "per_gli_animali", "it": "Per gli animali" },
+          { "key": "per_il_bambino", "it": "Per il bambino" },
+          { "key": "per_la_casa", "it": "Per la casa" },
+          { "key": "ristorazione", "it": "Ristorazione" },
+          { "key": "supermercato", "it": "Supermercato" },
+          { "key": "altro", "it": "Altro" }
         ],
         "innerOperator": "or"
       }
@@ -351,162 +349,161 @@ GET STORE DETAIL INFO FOR DIFFERENT VIEWS
 
 // Name
 const getName = function (store) {
-    let name = store.properties.name;
-    return '<header><h4>' + name + '</h4></header>';
+  const name = store.properties.name;
+  return '<header><h4>' + name + '</h4></header>';
 };
 
 // Address
 const getAddress = function (store) {
-    let address = store.properties.address.lines;
-    return '<p class="storeInfo getAddress"><strong>Indirizzo</strong><br />' + address + '</p>';
+  const address = store.properties.address.lines;
+  return '<p class="storeInfo getAddress"><strong>Indirizzo</strong><br />' + address + '</p>';
 };
 
 const getAddressNoTitle = function (store) {
-    let address = store.properties.address.lines;
-    return '<p class="storeInfo getAddressNoTitle">' + address + '</p>';
+  const address = store.properties.address.lines;
+  return '<p class="storeInfo getAddressNoTitle">' + address + '</p>';
 };
 
 // Website and email
 const getContacts = function (store) {
-    let phone = store.properties.contact.phone;
-    let email = store.properties.contact.email;
-    let website = store.properties.contact.website;
-    let phone_2 = store.properties.user_properties.phone_2;
-    let html = "";
-    // html += getPhone(store);
-    if (phone) html += '<a href="tel:' + phone + '" class="btn">Effettua telefonata</a>';
-    if (phone_2) html += '<a href="tel:' + phone_2 + '" class="btn">Telefono secondario</a>';
-    if (email) html += '<a href="mailto:' + email + '" class="btn">Invia email</a>';
-    if (website) html += '<a href="http://' + website + '" class="btn">Visita sito web</a>';
-    return '<div class="">' + html + '</div><br>';
+  const phone = store.properties.contact.phone;
+  const email = store.properties.contact.email;
+  const website = store.properties.contact.website;
+  const phone_2 = store.properties.user_properties.phone_2;
+  const html = "";
+  // html += getPhone(store);
+  if (phone) html += '<a href="tel:' + phone + '" class="btn">Effettua telefonata</a>';
+  if (phone_2) html += '<a href="tel:' + phone_2 + '" class="btn">Telefono secondario</a>';
+  if (email) html += '<a href="mailto:' + email + '" class="btn">Invia email</a>';
+  if (website) html += '<a href="http://' + website + '" class="btn">Visita sito web</a>';
+  return '<div class="">' + html + '</div><br>';
 };
 
 // Zones
 const getShipsToWhere = function (store) {
-    let where = store.properties.user_properties.where;
-    if (where) return '<p class="storeInfo getShipsToWhere"><strong>Quali zone ti rendi disponibile a servire</strong><br />' + where.replace('\n','<br>') + '</p>';
+  let where = store.properties.user_properties.where;
+  if (where) {
+    return '<p class="storeInfo getShipsToWhere"><strong>Quali zone ti rendi disponibile a servire</strong><br />' + where.replace('\n', '<br/>') + '</p>';
+  }
 };
 
 // Costs
 const getShipsToCost = function (store) {
-    let cost = store.properties.user_properties.cost;
-    if (cost) return '<p class="storeInfo getShipsToCost"><strong>Costo</strong><br />' + cost.replace('\n','<br>') + '</p>';
+  let cost = store.properties.user_properties.cost;
+  if (cost) return '<p class="storeInfo getShipsToCost"><strong>Costo</strong><br />' + cost.replace('\n', '<br>') + '</p>';
 };
 
 // Tags
 const tagLabels = {
-    "abbigliamento": "Abbigliamento",
-    "bar_gelateria": "Bar / Gelateria",
-    "edicola_cartoleria": "Edicola / Cartoleria",
-    "elettronica_telefonia": "Elettronica / Telefonia",
-    "farmacia_erboristeria": "Farmacia / Erboristeria",
-    "fiorista": "Fiorista",
-    "forno": "Forno",
-    "generi_alimentari": "Generi alimentari",
-    "hobby_e_tempo_libero": "Hobby e tempo libero",
-    "igiene_e_bellezza": "Igiene e Bellezza",
-    "lavanderia": "Lavanderia",
-    "ottico": "Ottico",
-    "per_gli_animali": "Per gli animali",
-    "per_il_bambino": "Per il bambino",
-    "per_la_casa": "Per la casa",
-    "ristorazione": "Ristorazione",
-    "supermercato": "Supermercato",
-    "altro": "Altro"
+  "abbigliamento": "Abbigliamento",
+  "bar_gelateria": "Bar / Gelateria",
+  "edicola_cartoleria": "Edicola / Cartoleria",
+  "elettronica_telefonia": "Elettronica / Telefonia",
+  "farmacia_erboristeria": "Farmacia / Erboristeria",
+  "fiorista": "Fiorista",
+  "forno": "Forno",
+  "generi_alimentari": "Generi alimentari",
+  "hobby_e_tempo_libero": "Hobby e tempo libero",
+  "igiene_e_bellezza": "Igiene e Bellezza",
+  "lavanderia": "Lavanderia",
+  "ottico": "Ottico",
+  "per_gli_animali": "Per gli animali",
+  "per_il_bambino": "Per il bambino",
+  "per_la_casa": "Per la casa",
+  "ristorazione": "Ristorazione",
+  "supermercato": "Supermercato",
+  "altro": "Altro"
 };
+
 const getTags = function (store) {
-    let tagsHTMLList = '';
-    if (store.properties && store.properties.tags.length > 0) {
-      tagsHTMLList = '<p class="storeInfo getTags"><strong>Categorie merceologiche</strong><br />';
-      for (let tag in store.properties.tags) {
-        if (tagLabels[store.properties.tags[tag]]) {
-          tagsHTMLList += '<span>' + tagLabels[store.properties.tags[tag]] + '</span><br>';
-        }
+  let tagsHTMLList = '';
+  if (store.properties && store.properties.tags.length > 0) {
+    tagsHTMLList = '<p class="storeInfo getTags"><strong>Categorie merceologiche</strong><br />';
+    for (let tag in store.properties.tags) {
+      if (tagLabels[store.properties.tags[tag]]) {
+        tagsHTMLList += '<span>' + tagLabels[store.properties.tags[tag]] + '</span><br>';
       }
-      tagsHTMLList += '&nbsp;</p>';
     }
-    return tagsHTMLList;
+    tagsHTMLList += '&nbsp;</p>';
+  }
+  return tagsHTMLList;
 };
 
 // Detail sidebar title
 const getTagsNoTitle = function (store) {
-    let tagsHTMLList = '';
-    if (store.properties && store.properties.tags.length > 0) {
-      tagsHTMLList = '<p class="storeInfo getTagsNoTitle">';
-      for (let tag in store.properties.tags) {
-        if (tagLabels[store.properties.tags[tag]]) {
-          tagsHTMLList += '<span>' + tagLabels[store.properties.tags[tag]] + '</span><br>';
-        }
+  let tagsHTMLList = '';
+  if (store.properties && store.properties.tags.length > 0) {
+    tagsHTMLList = '<p class="storeInfo getTagsNoTitle">';
+    for (let tag in store.properties.tags) {
+      if (tagLabels[store.properties.tags[tag]]) {
+        tagsHTMLList += '<span>' + tagLabels[store.properties.tags[tag]] + '</span><br>';
       }
-      tagsHTMLList += '&nbsp;<br>';
-      tagsHTMLList += '<span class="btn">Vedi maggiori informazioni</span></p>';
     }
-    return tagsHTMLList;
+    tagsHTMLList += '&nbsp;<br>';
+    tagsHTMLList += '<span class="btn">Vedi maggiori informazioni</span></p>';
+  }
+  return tagsHTMLList;
 };
 
 // Categories
 const getCategories = function (store) {
-    const getCategories = store.properties.types[0];
-    const getOtherCats = store.properties.user_properties.other_cats;
-    if (getCategories == 'Altro') {
-      return '<p class="storeInfo getCategories"><strong>Categoria merceologica</strong><br />'+getCategories+': '+getOtherCats+'</p>';
-    } else {
-      return '<p class="storeInfo getCategories"><strong>Categoria merceologica</strong><br />'+getCategories+'</p>';
-    }
+  const getCategories = store.properties.types[0];
+  const getOtherCats = store.properties.user_properties.other_cats;
+  if (getCategories == 'Altro') {
+    return '<p class="storeInfo getCategories"><strong>Categoria merceologica</strong><br />' + getCategories + ': ' + getOtherCats + '</p>';
+  } else {
+    return '<p class="storeInfo getCategories"><strong>Categoria merceologica</strong><br />' + getCategories + '</p>';
+  }
 };
 
 // Categories without prefix
 const getCategoriesNoTitle = function (store) {
-    const getCategories = store.properties.types[0];
-    const getOtherCats = store.properties.user_properties.other_cats;
-    // if (getOtherCats) other_cats = '<strong>:</strong> ' + getOtherCats;
-    // return '<p class="storeInfo getCategories">'+getCategories+'</p>'; */
-    if (getCategories == 'Altro') {
-      return '<p class="storeInfo getCategoriesNoTitle"><i>'+getCategories+': '+getOtherCats+'</i></p><p class="storeInfo getCategoriesNoTitleBtn"><i>Info &raquo;</i></p>';
-    } else {
-      return '<p class="storeInfo getCategoriesNoTitle"><i>'+getCategories+'</i></p><p class="storeInfo getCategoriesNoTitleBtn"><i>Info &raquo;</i></p>';
-    }
+  const getCategories = store.properties.types[0];
+  const getOtherCats = store.properties.user_properties.other_cats;
+  // if (getOtherCats) other_cats = '<strong>:</strong> ' + getOtherCats;
+  // return '<p class="storeInfo getCategories">'+getCategories+'</p>'; */
+  if (getCategories == 'Altro') {
+    return '<p class="storeInfo getCategoriesNoTitle"><i>' + getCategories + ': ' + getOtherCats + '</i></p><p class="storeInfo getCategoriesNoTitleBtn"><i>Info &raquo;</i></p>';
+  } else {
+    return '<p class="storeInfo getCategoriesNoTitle"><i>' + getCategories + '</i></p><p class="storeInfo getCategoriesNoTitleBtn"><i>Info &raquo;</i></p>';
+  }
 };
 
 // Services
 const getServices = function (store) {
-    const services = store.properties.user_properties.services;
-    if (services) return '<p class="storeInfo getServices"><strong>Quali servizi offri oltre alla consegna a domicilio</strong><br />' + services + '</p>';
+  const services = store.properties.user_properties.services;
+  if (services) return '<p class="storeInfo getServices"><strong>Quali servizi offri oltre alla consegna a domicilio</strong><br />' + services + '</p>';
 };
 
 // Services without prefix
 const getServicesNoTitle = function (store) {
-    const services = store.properties.user_properties.services;
-    if (services) return '<p class="storeInfo getServicesNoTitle">' + services + '</p>';
+  const services = store.properties.user_properties.services;
+  if (services) return '<p class="storeInfo getServicesNoTitle">' + services + '</p>';
 };
 
 // Source
 const getFonte = function (store) {
-    const fonte = store.properties.user_properties.fonte;
-    // return '<p class="storeInfo getServicesNoTitle">ciao</p>';
-    if (fonte) 
-        switch(fonte) {
-            case 'comune_milano':
-              return '<p class="storeInfo getFonte"><strong>Fonte</strong><br />Comune di Milano (<a href="https://www.comune.milano.it/aree-tematiche/servizi-sociali/milanoaiuta/spesa-a-domicilio" target="_blank">link</a>)</p>';
-              break;
-            default:
-              return '';
-              break;
-          }
+  const fonte = store.properties.user_properties.fonte;
+  // return '<p class="storeInfo getServicesNoTitle">ciao</p>';
+  if (fonte === "comune_milano") {
+    return '<p class="storeInfo getFonte"><strong>Fonte</strong><br />Comune di Milano (<a href="https://www.comune.milano.it/aree-tematiche/servizi-sociali/milanoaiuta/spesa-a-domicilio" target="_blank">link</a>)</p>';
+  }
+  return '';
 };
 
 // Distance
 const getDistance = function (store) {
-    let distance = "";
-    if (store.properties.distance < 1000) distance = Math.round(store.properties.distance) + " mt";
-    else distance = (store.properties.distance / 1000).toFixed(1) + " km"
-    return '<p class="storeInfo getDistance">' + distance + '</p>';
+  let distance = "";
+  if (store.properties.distance < 1000) {
+    distance = Math.round(store.properties.distance) + " mt";
+  } else {
+    distance = (store.properties.distance / 1000).toFixed(1) + " km";
+  }
+  return '<p class="storeInfo getDistance">' + distance + '</p>';
 };
 
 /******************
-
-MAP LOADER
-
+    MAP LOADER
 ******************/
 
 var loadStoreLocator = function () {
@@ -514,34 +511,32 @@ var loadStoreLocator = function () {
   var isMobile = document.querySelector('body').clientWidth < 750;
 
   webapp.setConf(storeLocatorConfig);
-
-
   webapp.render(isMobile);
 
   webapp.setFullStoreRenderer(function (store) {
-      let myCustomContent = document.createElement('ul');
-      myCustomContent.id = "myCustomContentID";
-      let html = [];
-
-      //html.push(getName(store));
-      html.push(getCategories(store));
-      html.push(getAddress(store));
-      // html.push(getDistance(store));
-      html.push(getServices(store));
-      html.push(getShipsToWhere(store));
-      html.push(getShipsToCost(store));
-      html.push(getContacts(store));
-      html.push(getFonte(store));
+    let myCustomContent = document.createElement('ul');
+    myCustomContent.id = "myCustomContentID";
     
-      myCustomContent.innerHTML = html.join("");
-      return myCustomContent;
+    let html = [];
+    //html.push(getName(store));
+    html.push(getCategories(store));
+    html.push(getAddress(store));
+    // html.push(getDistance(store));
+    html.push(getServices(store));
+    html.push(getShipsToWhere(store));
+    html.push(getShipsToCost(store));
+    html.push(getContacts(store));
+    html.push(getFonte(store));
+
+    myCustomContent.innerHTML = html.join("");
+    return myCustomContent;
   });
 
   webapp.setSummaryStoreRenderer(function (store) {
     let mySummaryContent = document.createElement('div');
     mySummaryContent.className = "store-summary";
+    
     let html = [];
-
     html.push(getName(store));
     html.push(getAddressNoTitle(store));
     // html.push(getDistance(store));
@@ -550,19 +545,21 @@ var loadStoreLocator = function () {
 
     mySummaryContent.innerHTML = html.join("");
     mySummaryContent.onclick = function () {
-        console.log('Click Event: ' + store.properties.name);
+      console.log('Click Event: ' + store.properties.name);
     };
+    
     return mySummaryContent;
   });
 };
 
-
 if (document.readyState === "complete") {
   loadStoreLocator();
 }
+
 if (document.addEventListener) {
   document.addEventListener("DOMContentLoaded", loadStoreLocator, false);
 }
+
 if (window.addEventListener) {
   window.addEventListener("load", loadStoreLocator, false);
 } else if (window.attachEvent) {
@@ -570,35 +567,35 @@ if (window.addEventListener) {
 }
 
 function openMenu() {
-    $('.dropdown-btn').on('click', function() {
-        $(this).toggleClass('active');
-        $('.header-menu').toggleClass('active');
-        $('body').toggleClass('lock');
-    });
+  $('.dropdown-btn').on('click', function () {
+    $(this).toggleClass('active');
+    $('.header-menu').toggleClass('active');
+    $('body').toggleClass('lock');
+  });
 };
-openMenu()
+openMenu();
 
 function changeLang() {
-    $('.lang').on('click', function() {
-        $('.lang').not($(this)).removeClass('active');
-        $(this).addClass('active');
-    })
+  $('.lang').on('click', function () {
+    $('.lang').not($(this)).removeClass('active');
+    $(this).addClass('active');
+  })
 };
-changeLang()
+changeLang();
 
 function changeHeaderMenu() {
-    $('.header-menu > li').on('click', function() {
-        $('.header-menu > li').not($(this)).removeClass('active');
-        $(this).addClass('active');
-    })
+  $('.header-menu > li').on('click', function () {
+    $('.header-menu > li').not($(this)).removeClass('active');
+    $(this).addClass('active');
+  })
 };
 changeHeaderMenu();
 
 function fixedMenu() {
-    if (window.scrollY > 10 && window.innerWidth < 767) {
-        $('#header').css({ "position": "fixed", "padding-top": "25px", "padding-bottom": "10px", "background-color": "#333333", })
-    } else {
-        $('#header').css({ "height": "", "position": "", "padding-top": "", "padding-bottom": "", "background-color": "", })
-    }
+  if (window.scrollY > 10 && window.innerWidth < 767) {
+    $('#header').css({ "position": "fixed", "padding-top": "25px", "padding-bottom": "10px", "background-color": "#333333", })
+  } else {
+    $('#header').css({ "height": "", "position": "", "padding-top": "", "padding-bottom": "", "background-color": "", })
+  }
 };
-fixedMenu()
+fixedMenu();
