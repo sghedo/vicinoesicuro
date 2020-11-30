@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>Icons / Search</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M10.9799742,6.24596014 C10.9799742,3.52588919 8.81224941,1.32049901 6.13859539,1.32049901 C3.46508974,1.32049901 1.29786933,3.52573823 1.29786933,6.24596014 C1.29786933,8.96618204 3.46508974,11.1714213 6.13859539,11.1714213 C8.81224941,11.1714213 10.9799742,8.96603108 10.9799742,6.24596014 Z M11.7037905,11.019271 L16,15.026646 L15.1229363,16 L10.8267268,11.9926251 L11.7037905,11.019271 Z M6.13859539,0 C9.52902558,0 12.2778435,2.79658015 12.2778435,6.24596014 C12.2778435,9.69534012 9.52902558,12.4919203 6.13859539,12.4919203 C2.74826584,12.4919203 0,9.69544253 0,6.24596014 C0,2.79647775 2.74826584,0 6.13859539,0 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="002_1024-List" transform="translate(-276.000000, -64.000000)">
+            <g id="Group-3" transform="translate(-10.000000, 48.000000)">
+                <g id="Icons-/-Search" transform="translate(286.000000, 16.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Stroke-1" fill="#121212" fill-rule="nonzero" xlink:href="#path-1"></use>
+                    <g id="Colors-/-notBlack" mask="url(#mask-2)" fill="#121212" fill-rule="evenodd">
+                        <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
