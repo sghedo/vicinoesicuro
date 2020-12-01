@@ -1,6 +1,6 @@
 # Vicinoesicuro, the non-profit map against Coronavirus
 
-### About the project
+## About the project
 
 [**Vicinoesicuro**](https://vicinoesicuro.it/) is a **non–profit** project against the Covid-19 outbreak and was launched in Italy a few hours after the announcement of the lockdown by Prime Minister Conte on March 9, 2020.
 
@@ -20,11 +20,11 @@ Managed by **volunteers** and initially available only in the province of Reggio
 
 **Vicinoesicuro** was developed together with [Alfredo Colella](https://www.linkedin.com/in/alfredocolella/), [Cristiano Ferrari](https://www.linkedin.com/in/cristianoferrari/), [Francesco del Bosco](https://www.linkedin.com/in/francescodelbosco) and [Federico Capucci](https://www.linkedin.com/in/capuccifederico/).
 
-### Why GitHub
+## Why GitHub
 
 **Vicinoesicuro** was published on GitHub with the aim of favoring the replication of the project in other countries, as well as allowing its evolution thanks to the contribution of those who will decide to improve a project that is very simple in itself as you will see from the code.
 
-### MarTech tools behind Vicinoesicuro
+## MarTech tools behind Vicinoesicuro
 
 **Vicinoesicuro** is built on:
 * A few html/js/css with really simple markup
@@ -40,7 +40,7 @@ Detailed info on how to create the submission form, how to structure the Google 
 Some other tools are used for web analytics ([Google Analytics](https://marketingplatform.google.com/intl/it/about/analytics/), [Hotjar](https://www.hotjar.com/))) while [Iubenda](https://www.iubenda.com/it/) is used for the cookie/privacy policy generator. 
 
 
-### Contacts
+## Contacts
 
 Contact us for further information or simply to tell us your opinion:
 * [info@vicinoesicuro.it](mailto:info@vicinoesicuro.it)
