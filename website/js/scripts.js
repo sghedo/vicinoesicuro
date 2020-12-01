@@ -1,13 +1,15 @@
+import "./settings.js";
+
 /******************
     MAP SETTINGS
 ******************/
 
-var storeLocatorConfig = {
+const storeLocatorConfig = {
   "theme": {
-    "primary_color": "#D81A60"
+    "primary_color": common_basecolor
   },
   "datasource": {
-    "api_key": "woos-9aa31a07-fc32-392e-a112-bd5d7350a7e0",
+    "api_key": woosmap_woosmapKey,
     "max_responses": 150,
     "max_distance": 20000,
     "use_distance_matrix": false
@@ -33,7 +35,7 @@ var storeLocatorConfig = {
   },
   "maps": {
     "provider": "google",
-    "api_key": "AIzaSyBN8I1KsGyHdCkDEHY0G4-m6wZBzVwVVr0",
+    "api_key": woosmap_googleMapsKey,
     "geocoder": { "region": "it" },
     "disableDirections": true,
     "places": {
@@ -43,12 +45,12 @@ var storeLocatorConfig = {
   },
   "woosmapview": {
     "initialCenter": {
-      "lat": 41.902782,
-      "lng": 12.496366
+      "lat": woosmap_lat,
+      "lng": woosmap_lng
     },
     "initialZoom": 6,
     "tileStyle": {
-      "color": "#D81A60",
+      "color": common_basecolor,
       "size": 11,
       "minSize": 5,
     },
@@ -338,14 +340,11 @@ var storeLocatorConfig = {
     ],
     "outerOperator": "and"
   }
-}
+};
 
 /******************
-
-GET STORE DETAIL INFO FOR DIFFERENT VIEWS
-
+    GET STORE DETAIL INFO FOR DIFFERENT VIEWS
 ******************/
-
 
 // Name
 const getName = function (store) {
@@ -356,7 +355,7 @@ const getName = function (store) {
 // Address
 const getAddress = function (store) {
   const address = store.properties.address.lines;
-  return '<p class="storeInfo getAddress"><strong>Indirizzo</strong><br />' + address + '</p>';
+  return '<p class="storeInfo getAddress"><strong>' + woosmap_translation_address + '</strong><br />' + address + '</p>';
 };
 
 const getAddressNoTitle = function (store) {
@@ -372,10 +371,10 @@ const getContacts = function (store) {
   const phone_2 = store.properties.user_properties.phone_2;
   const html = "";
   // html += getPhone(store);
-  if (phone) html += '<a href="tel:' + phone + '" class="btn">Effettua telefonata</a>';
-  if (phone_2) html += '<a href="tel:' + phone_2 + '" class="btn">Telefono secondario</a>';
-  if (email) html += '<a href="mailto:' + email + '" class="btn">Invia email</a>';
-  if (website) html += '<a href="http://' + website + '" class="btn">Visita sito web</a>';
+  if (phone) html += '<a href="tel:' + phone + '" class="btn">' + woosmap_translation_callByPhone + '</a>';
+  if (phone_2) html += '<a href="tel:' + phone_2 + '" class="btn">' + woosmap_translation_secondaryPhone + '</a>';
+  if (email) html += '<a href="mailto:' + email + '" class="btn">' + woosmap_translation_sendEmail + '</a>';
+  if (website) html += '<a href="http://' + website + '" class="btn">' + woosmap_translation_visitWebsite + '</a>';
   return '<div class="">' + html + '</div><br>';
 };
 
@@ -383,14 +382,14 @@ const getContacts = function (store) {
 const getShipsToWhere = function (store) {
   let where = store.properties.user_properties.where;
   if (where) {
-    return '<p class="storeInfo getShipsToWhere"><strong>Quali zone ti rendi disponibile a servire</strong><br />' + where.replace('\n', '<br/>') + '</p>';
+    return '<p class="storeInfo getShipsToWhere"><strong>' + woosmap_translation_deliveryZones + '</strong><br />' + where.replace('\n', '<br/>') + '</p>';
   }
 };
 
 // Costs
 const getShipsToCost = function (store) {
   let cost = store.properties.user_properties.cost;
-  if (cost) return '<p class="storeInfo getShipsToCost"><strong>Costo</strong><br />' + cost.replace('\n', '<br>') + '</p>';
+  if (cost) return '<p class="storeInfo getShipsToCost"><strong>' + woosmap_translation_cost + '</strong><br />' + cost.replace('\n', '<br>') + '</p>';
 };
 
 // Tags
@@ -418,7 +417,7 @@ const tagLabels = {
 const getTags = function (store) {
   let tagsHTMLList = '';
   if (store.properties && store.properties.tags.length > 0) {
-    tagsHTMLList = '<p class="storeInfo getTags"><strong>Categorie merceologiche</strong><br />';
+    tagsHTMLList = '<p class="storeInfo getTags"><strong>' + woosmap_translation_categories + '</strong><br />';
     for (let tag in store.properties.tags) {
       if (tagLabels[store.properties.tags[tag]]) {
         tagsHTMLList += '<span>' + tagLabels[store.properties.tags[tag]] + '</span><br>';
@@ -440,7 +439,7 @@ const getTagsNoTitle = function (store) {
       }
     }
     tagsHTMLList += '&nbsp;<br>';
-    tagsHTMLList += '<span class="btn">Vedi maggiori informazioni</span></p>';
+    tagsHTMLList += '<span class="btn">' + woosmap_translation_infoExt + '</span></p>';
   }
   return tagsHTMLList;
 };
@@ -450,9 +449,9 @@ const getCategories = function (store) {
   const getCategories = store.properties.types[0];
   const getOtherCats = store.properties.user_properties.other_cats;
   if (getCategories == 'Altro') {
-    return '<p class="storeInfo getCategories"><strong>Categoria merceologica</strong><br />' + getCategories + ': ' + getOtherCats + '</p>';
+    return '<p class="storeInfo getCategories"><strong>' + woosmap_translation_categoriesSingular + '</strong><br />' + getCategories + ': ' + getOtherCats + '</p>';
   } else {
-    return '<p class="storeInfo getCategories"><strong>Categoria merceologica</strong><br />' + getCategories + '</p>';
+    return '<p class="storeInfo getCategories"><strong>' + woosmap_translation_categoriesSingular + '</strong><br />' + getCategories + '</p>';
   }
 };
 
@@ -463,16 +462,16 @@ const getCategoriesNoTitle = function (store) {
   // if (getOtherCats) other_cats = '<strong>:</strong> ' + getOtherCats;
   // return '<p class="storeInfo getCategories">'+getCategories+'</p>'; */
   if (getCategories == 'Altro') {
-    return '<p class="storeInfo getCategoriesNoTitle"><i>' + getCategories + ': ' + getOtherCats + '</i></p><p class="storeInfo getCategoriesNoTitleBtn"><i>Info &raquo;</i></p>';
+    return '<p class="storeInfo getCategoriesNoTitle"><i>' + getCategories + ': ' + getOtherCats + '</i></p><p class="storeInfo getCategoriesNoTitleBtn"><i>' + woosmap_translation_info + ' &raquo;</i></p>';
   } else {
-    return '<p class="storeInfo getCategoriesNoTitle"><i>' + getCategories + '</i></p><p class="storeInfo getCategoriesNoTitleBtn"><i>Info &raquo;</i></p>';
+    return '<p class="storeInfo getCategoriesNoTitle"><i>' + getCategories + '</i></p><p class="storeInfo getCategoriesNoTitleBtn"><i>' + woosmap_translation_info + ' &raquo;</i></p>';
   }
 };
 
 // Services
 const getServices = function (store) {
   const services = store.properties.user_properties.services;
-  if (services) return '<p class="storeInfo getServices"><strong>Quali servizi offri oltre alla consegna a domicilio</strong><br />' + services + '</p>';
+  if (services) return '<p class="storeInfo getServices"><strong>' + woosmap_translation_services + '</strong><br />' + services + '</p>';
 };
 
 // Services without prefix
@@ -516,7 +515,7 @@ var loadStoreLocator = function () {
   webapp.setFullStoreRenderer(function (store) {
     let myCustomContent = document.createElement('ul');
     myCustomContent.id = "myCustomContentID";
-    
+
     let html = [];
     //html.push(getName(store));
     html.push(getCategories(store));
@@ -535,7 +534,7 @@ var loadStoreLocator = function () {
   webapp.setSummaryStoreRenderer(function (store) {
     let mySummaryContent = document.createElement('div');
     mySummaryContent.className = "store-summary";
-    
+
     let html = [];
     html.push(getName(store));
     html.push(getAddressNoTitle(store));
@@ -547,7 +546,7 @@ var loadStoreLocator = function () {
     mySummaryContent.onclick = function () {
       console.log('Click Event: ' + store.properties.name);
     };
-    
+
     return mySummaryContent;
   });
 };
