@@ -1,3 +1,9 @@
+/* Set your base color here */
+
+:root {
+  --basecolor: #D81A60;
+}
+
 /* General Reset */
 
 body {
@@ -481,7 +487,7 @@ p {
 .addbtn {
   display: inline-block;
   vertical-align: top;
-  background-color: #d81a60;
+  background-color: var(--basecolor);
   color: #fff;
   text-align: center;
   margin: 3px;
@@ -596,7 +602,7 @@ p {
 }
 
 .map #filter label [type="checkbox"]:checked ~ .chk-lbl {
-  color: #d81a60;
+  color: var(--basecolor);
   color: inherit;
 }
 
@@ -610,7 +616,7 @@ p {
   position: relative;
   padding: 4px 0 4px 34px;
   color: inherit;
-  color: #d81a60;
+  color: var(--basecolor);
 }
 
 .map #filter label .chk-lbl::before {
@@ -663,7 +669,7 @@ p {
 }
 
 .map #listings-header .meta strong {
-  color: #d81a60;
+  color: var(--basecolor);
 }
 
 .map .listings-item {
@@ -709,7 +715,7 @@ p {
 .map .listings-item-info .back {
   display: block;
   padding: 15px 42px 15px 30px;
-  background-color: #d81a60;
+  background-color: var(--basecolor);
   color: #fff;
   font-size: 15px;
   line-height: 18px;
@@ -842,7 +848,7 @@ p {
 }
 
 .goToinfo a:hover {
-  color: #d81a60;
+  color: var(--basecolor);
   text-decoration: none;
 }
 
@@ -1059,7 +1065,7 @@ p {
 }
 
 #header .header-menu.active {
-  border-bottom: 3px solid #d81a60;
+  border-bottom: 3px solid var(--basecolor);
 }
 
 .main a {
@@ -1072,7 +1078,7 @@ p {
 
 .header-menu li a:hover {
   text-decoration: none;
-  color: #d81a60;
+  color: var(--basecolor);
 }
 
 .header-menu li a:visited,
