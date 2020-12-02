@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /*******************************
     SETTINGS AND TRANSLATIONS
@@ -38,6 +39,63 @@ var storeLocatorConfig = {
         "max_responses": 150,
         "max_distance": 20000,
         "use_distance_matrix": false
+=======
+import "./settings.js";
+
+/******************
+    MAP SETTINGS
+******************/
+
+const storeLocatorConfig = {
+  "theme": {
+    "primary_color": common_basecolor
+  },
+  "datasource": {
+    "api_key": woosmap_woosmapKey,
+    "max_responses": 150,
+    "max_distance": 20000,
+    "use_distance_matrix": false
+  },
+  "recommendation": {
+    "useRecommendation": false
+  },
+  "internationalization": {
+    "lang": "it",
+    "unitSystem": 0,
+    "customTranslations": {
+      "it": {
+        "filters": {
+          "filters": "Scegli una categoria"
+        }
+      },
+      "en": {
+        "filters": {
+          "filters": "Choose a category"
+        }
+      }
+    }
+  },
+  "maps": {
+    "provider": "google",
+    "api_key": woosmap_googleMapsKey,
+    "geocoder": { "region": "it" },
+    "disableDirections": true,
+    "places": {
+      "types": ["geocode"],
+      "componentRestrictions": { "country": "it" }
+    }
+  },
+  "woosmapview": {
+    "initialCenter": {
+      "lat": woosmap_lat,
+      "lng": woosmap_lng
+    },
+    "initialZoom": 6,
+    "tileStyle": {
+      "color": common_basecolor,
+      "size": 11,
+      "minSize": 5,
+>>>>>>> 889f8faf7b9f7dead6cff2a0760af664bc47dbfb
     },
     "recommendation": {
         "useRecommendation": false
@@ -306,6 +364,7 @@ var storeLocatorConfig = {
         FILTERS DEFINITION
     ********************************/
 
+<<<<<<< HEAD
     "filters": {
         "filters": [{
             "propertyType": "tag",
@@ -432,6 +491,56 @@ const getAddress = function(store) {
 const getAddressNoTitle = function(store) {
     let address = store.properties.address.lines;
     return '<p class="storeInfo getAddressNoTitle">' + address + '</p>';
+=======
+  "filters": {
+    "filters": [
+      {
+        "propertyType": "tag",
+        "title": {
+          "it": ""
+        },
+        "choices": [
+          { "key": "abbigliamento", "it": "Abbigliamento" },
+          { "key": "bar_gelateria", "it": "Bar / Gelateria" },
+          { "key": "edicola_cartoleria", "it": "Edicola / Cartoleria" },
+          { "key": "elettronica_telefonia", "it": "Elettronica / Telefonia" },
+          { "key": "farmacia_erboristeria", "it": "Farmacia / Erboristeria" },
+          { "key": "fiorista", "it": "Fiorista" },
+          { "key": "forno", "it": "Forno" },
+          { "key": "generi_alimentari", "it": "Generi alimentari" },
+          { "key": "hobby_e_tempo_libero", "it": "Hobby e tempo libero" },
+          { "key": "igiene_e_bellezza", "it": "Igiene e Bellezza" },
+          { "key": "lavanderia", "it": "Lavanderia" },
+          { "key": "ottico", "it": "Ottico" },
+          { "key": "per_gli_animali", "it": "Per gli animali" },
+          { "key": "per_il_bambino", "it": "Per il bambino" },
+          { "key": "per_la_casa", "it": "Per la casa" },
+          { "key": "ristorazione", "it": "Ristorazione" },
+          { "key": "supermercato", "it": "Supermercato" },
+          { "key": "altro", "it": "Altro" }
+        ],
+        "innerOperator": "or"
+      }
+    ],
+    "outerOperator": "and"
+  }
+};
+
+/******************
+    GET STORE DETAIL INFO FOR DIFFERENT VIEWS
+******************/
+
+// Name
+const getName = function (store) {
+  const name = store.properties.name;
+  return '<header><h4>' + name + '</h4></header>';
+};
+
+// Address
+const getAddress = function (store) {
+  const address = store.properties.address.lines;
+  return '<p class="storeInfo getAddress"><strong>' + woosmap_translation_address + '</strong><br />' + address + '</p>';
+>>>>>>> 889f8faf7b9f7dead6cff2a0760af664bc47dbfb
 };
 
 // Store website and contacts
@@ -450,6 +559,7 @@ const getContacts = function(store) {
     return '<div class="">' + html + '</div><br>';
 };
 
+<<<<<<< HEAD
 // Services
 
 const getServices = function(store) {
@@ -460,10 +570,40 @@ const getServices = function(store) {
 const getServicesNoTitle = function(store) {
     const services = store.properties.user_properties.services;
     if (services) return '<p class="storeInfo getServicesNoTitle">' + services + '</p>';
+=======
+// Website and email
+const getContacts = function (store) {
+  const phone = store.properties.contact.phone;
+  const email = store.properties.contact.email;
+  const website = store.properties.contact.website;
+  const phone_2 = store.properties.user_properties.phone_2;
+  const html = "";
+  // html += getPhone(store);
+  if (phone) html += '<a href="tel:' + phone + '" class="btn">' + woosmap_translation_callByPhone + '</a>';
+  if (phone_2) html += '<a href="tel:' + phone_2 + '" class="btn">' + woosmap_translation_secondaryPhone + '</a>';
+  if (email) html += '<a href="mailto:' + email + '" class="btn">' + woosmap_translation_sendEmail + '</a>';
+  if (website) html += '<a href="http://' + website + '" class="btn">' + woosmap_translation_visitWebsite + '</a>';
+  return '<div class="">' + html + '</div><br>';
+};
+
+// Zones
+const getShipsToWhere = function (store) {
+  let where = store.properties.user_properties.where;
+  if (where) {
+    return '<p class="storeInfo getShipsToWhere"><strong>' + woosmap_translation_deliveryZones + '</strong><br />' + where.replace('\n', '<br/>') + '</p>';
+  }
+};
+
+// Costs
+const getShipsToCost = function (store) {
+  let cost = store.properties.user_properties.cost;
+  if (cost) return '<p class="storeInfo getShipsToCost"><strong>' + woosmap_translation_cost + '</strong><br />' + cost.replace('\n', '<br>') + '</p>';
+>>>>>>> 889f8faf7b9f7dead6cff2a0760af664bc47dbfb
 };
 
 // Service costs
 
+<<<<<<< HEAD
 const getShipsToCost = function(store) {
     let cost = store.properties.user_properties.cost;
     if (cost) return '<p class="storeInfo getShipsToCost"><strong>' + woosmap_translation_cost +'</strong><br />' + cost.replace('\n', '<br>') + '</p>';
@@ -482,6 +622,66 @@ const getCategories = function(store) {
     const getCategories = store.properties.types[0];
     const getOtherCats = store.properties.user_properties.other_cats;
     return '<p class="storeInfo getCategories"><strong>' + woosmap_translation_categoriesSingular + '</strong><br />' + getCategories + '</p>';
+=======
+const getTags = function (store) {
+  let tagsHTMLList = '';
+  if (store.properties && store.properties.tags.length > 0) {
+    tagsHTMLList = '<p class="storeInfo getTags"><strong>' + woosmap_translation_categories + '</strong><br />';
+    for (let tag in store.properties.tags) {
+      if (tagLabels[store.properties.tags[tag]]) {
+        tagsHTMLList += '<span>' + tagLabels[store.properties.tags[tag]] + '</span><br>';
+      }
+    }
+    tagsHTMLList += '&nbsp;</p>';
+  }
+  return tagsHTMLList;
+};
+
+// Detail sidebar title
+const getTagsNoTitle = function (store) {
+  let tagsHTMLList = '';
+  if (store.properties && store.properties.tags.length > 0) {
+    tagsHTMLList = '<p class="storeInfo getTagsNoTitle">';
+    for (let tag in store.properties.tags) {
+      if (tagLabels[store.properties.tags[tag]]) {
+        tagsHTMLList += '<span>' + tagLabels[store.properties.tags[tag]] + '</span><br>';
+      }
+    }
+    tagsHTMLList += '&nbsp;<br>';
+    tagsHTMLList += '<span class="btn">' + woosmap_translation_infoExt + '</span></p>';
+  }
+  return tagsHTMLList;
+};
+
+// Categories
+const getCategories = function (store) {
+  const getCategories = store.properties.types[0];
+  const getOtherCats = store.properties.user_properties.other_cats;
+  if (getCategories == 'Altro') {
+    return '<p class="storeInfo getCategories"><strong>' + woosmap_translation_categoriesSingular + '</strong><br />' + getCategories + ': ' + getOtherCats + '</p>';
+  } else {
+    return '<p class="storeInfo getCategories"><strong>' + woosmap_translation_categoriesSingular + '</strong><br />' + getCategories + '</p>';
+  }
+};
+
+// Categories without prefix
+const getCategoriesNoTitle = function (store) {
+  const getCategories = store.properties.types[0];
+  const getOtherCats = store.properties.user_properties.other_cats;
+  // if (getOtherCats) other_cats = '<strong>:</strong> ' + getOtherCats;
+  // return '<p class="storeInfo getCategories">'+getCategories+'</p>'; */
+  if (getCategories == 'Altro') {
+    return '<p class="storeInfo getCategoriesNoTitle"><i>' + getCategories + ': ' + getOtherCats + '</i></p><p class="storeInfo getCategoriesNoTitleBtn"><i>' + woosmap_translation_info + ' &raquo;</i></p>';
+  } else {
+    return '<p class="storeInfo getCategoriesNoTitle"><i>' + getCategories + '</i></p><p class="storeInfo getCategoriesNoTitleBtn"><i>' + woosmap_translation_info + ' &raquo;</i></p>';
+  }
+};
+
+// Services
+const getServices = function (store) {
+  const services = store.properties.user_properties.services;
+  if (services) return '<p class="storeInfo getServices"><strong>' + woosmap_translation_services + '</strong><br />' + services + '</p>';
+>>>>>>> 889f8faf7b9f7dead6cff2a0760af664bc47dbfb
 };
 
 const getCategoriesNoTitle = function(store) {
@@ -505,6 +705,7 @@ const getDistance = function(store) {
     return '<p class="storeInfo getDistance">' + distance + '</p>';
 };
 
+<<<<<<< HEAD
 /*******************************
     LOAD MAP
 ********************************/
@@ -552,6 +753,56 @@ var loadStoreLocator = function() {
         };
         return mySummaryContent;
     });
+=======
+/******************
+    MAP LOADER
+******************/
+
+var loadStoreLocator = function () {
+  var webapp = new WebApp('store-locator', 'woos-9aa31a07-fc32-392e-a112-bd5d7350a7e0');
+  var isMobile = document.querySelector('body').clientWidth < 750;
+
+  webapp.setConf(storeLocatorConfig);
+  webapp.render(isMobile);
+
+  webapp.setFullStoreRenderer(function (store) {
+    let myCustomContent = document.createElement('ul');
+    myCustomContent.id = "myCustomContentID";
+
+    let html = [];
+    //html.push(getName(store));
+    html.push(getCategories(store));
+    html.push(getAddress(store));
+    // html.push(getDistance(store));
+    html.push(getServices(store));
+    html.push(getShipsToWhere(store));
+    html.push(getShipsToCost(store));
+    html.push(getContacts(store));
+    html.push(getFonte(store));
+
+    myCustomContent.innerHTML = html.join("");
+    return myCustomContent;
+  });
+
+  webapp.setSummaryStoreRenderer(function (store) {
+    let mySummaryContent = document.createElement('div');
+    mySummaryContent.className = "store-summary";
+
+    let html = [];
+    html.push(getName(store));
+    html.push(getAddressNoTitle(store));
+    // html.push(getDistance(store));
+    html.push(getCategoriesNoTitle(store));
+    // html.push(getTagsNoTitle(store));
+
+    mySummaryContent.innerHTML = html.join("");
+    mySummaryContent.onclick = function () {
+      console.log('Click Event: ' + store.properties.name);
+    };
+
+    return mySummaryContent;
+  });
+>>>>>>> 889f8faf7b9f7dead6cff2a0760af664bc47dbfb
 };
 
 if (document.readyState === "complete") {
