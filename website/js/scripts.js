@@ -8,8 +8,9 @@
 ********************************/
 
 var woosmap_basecolor = "#D81A60"; // Remind to set your base color also on css/style.css
-var woosmap_woosmapKey = "woos-9aa31a07-fc32-392e-a112-bd5d7350a7e0";
-var woosmap_googleMapsKey = "AIzaSyBN8I1KsGyHdCkDEHY0G4-m6wZBzVwVVr0";
+var woosmap_countrycode = "it"; // ISO 3166-1 alpha-2 format (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+var woosmap_woosmapKey = "INSERT-YOUR-WOOSMAP-KEY-HERE";
+var woosmap_googleMapsKey = "INSERT-YOUR-GOOGLE-MAPS-API-KEY-HERE";
 var woosmap_translation_address = "Address";
 var woosmap_translation_callByPhone = "Call by phone";
 var woosmap_translation_secondaryPhone = "Seconday phone";
@@ -22,9 +23,9 @@ var woosmap_translation_categoriesSingular = "Category";
 var woosmap_translation_info = "Info";
 var woosmap_translation_infoExt = "View more info";
 var woosmap_translation_services = "Which services do you offer besides home delivery";
-var woosmap_intialZoom = 6;
-var woosmap_intialLat = 41.902782;
-var woosmap_intialLong = 12.496366;
+var woosmap_intialZoom = 6; // This is the map default zoom
+var woosmap_intialLat = 41.902782; // This is the map default latitute (centered on Italy)
+var woosmap_intialLong = 12.496366; // This is the map default longitude (centered on Italy)
 
 /*******************************
     MAP CONFIGURATOR
@@ -78,11 +79,11 @@ const storeLocatorConfig = {
   "maps": {
     "provider": "google",
     "api_key": woosmap_googleMapsKey,
-    "geocoder": { "region": "it" },
+    "geocoder": { "region": woosmap_countrycode },
     "disableDirections": true,
     "places": {
       "types": ["geocode"],
-      "componentRestrictions": { "country": "it" }
+      "componentRestrictions": { "country": woosmap_countrycode }
     }
   },
   "woosmapview": {
@@ -120,13 +121,13 @@ const storeLocatorConfig = {
         "provider": "google",
         "api_key": woosmap_googleMapsKey,
         "geocoder": {
-            "region": "it"
+            "region": woosmap_countrycode
         },
         "disableDirections": true,
         "places": {
             "types": ["geocode"],
             "componentRestrictions": {
-                "country": "it"
+                "country": woosmap_countrycode
             }
         }
     },
